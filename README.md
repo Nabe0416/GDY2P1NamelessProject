@@ -1,14 +1,14 @@
 # GDY2P1NamelessProject
 
+Last Update: 14 Sept
+
 ## Unity Part
 
 To avoid any merge error caused by different Unity versions, I hope everyone use the same version of Unity.
 
-You can download UnityHub in [this link](https://unity3d.com/get-unity/download?_ga=2.174973925.690089574.1568031371-1481599298.1536690902). And I recommend to use version **2019.1.1f1**. No special reasons, just because I'm using it. But if you have your preference, you can discuss this in the group and we can decide which version we are going to use as a group.
+The version we are going to use is **2018.8.4f1**, please install this version and open the project with this version.
 
-You can and should also register a Unity account. There's not much to say for Unity, you will learn how to install and use it during the development lessons.
-
-For the developers, you will use C# in Unity. If we go with version 2019.1.1f1, then this [manual](https://docs.unity3d.com/2019.1/Documentation/Manual/UnityManual.html) will be handy while you are programming.
+For the developers, you will use C# in Unity. This [manual](https://docs.unity3d.com/2018.4/Documentation/Manual/UnityManual.html) will be handy while you are learning how to use Unity.
 
 ---
 
@@ -17,7 +17,7 @@ For the developers, you will use C# in Unity. If we go with version 2019.1.1f1, 
 #### How to get the project from GitHub to your PC
 
 1. Register yourself a GitHub account.
-2. Install GitHub Desktop in [this link](https://desktop.github.com/). Sometimes there are bugs but it's pretty easy to use for people who knows nothing about node.js like me.
+2. Install GitHub Desktop in [this link](https://desktop.github.com/). Sometimes there are bugs but it's pretty easy to use for people who knows nothing about Node.js like me.
 3. Find a green button called "Clone or download" in this page, click it and copy the link.
 4. Go to GitHub Desktop that you just installed and sign in.
 5. **I haven't create the empty Unity project yet but you can still do this step. But there will be no Unity project downloaded to your PC at this point.** Go to File -> Clone repository -> URL, paste the link you just copied and choose a local path.
