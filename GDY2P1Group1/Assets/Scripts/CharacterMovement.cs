@@ -34,6 +34,7 @@ public class CharacterMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
+        /**
         if(Input.GetKey(KeyCode.W))
         {
             rb.MovePosition((Vector2)this.transform.position + new Vector2(0, MoveSpeed * Time.deltaTime));
@@ -50,6 +51,12 @@ public class CharacterMovement : MonoBehaviour
         {
             rb.MovePosition((Vector2)this.transform.position + new Vector2(MoveSpeed * Time.deltaTime, 0));
         }
+        **/
+
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        rb.MovePosition((Vector2)this.transform.position + new Vector2(x, y) * MoveSpeed * Time.deltaTime);
     }
 
     private Vector2 GetMousePosition()
