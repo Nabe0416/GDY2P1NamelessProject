@@ -60,8 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FollowPC.cs" />
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\Scripts\FollowPC.cs" />
+    <Compile Include="Assets\Scripts\HearRange.cs" />
+    <Compile Include="Assets\Scripts\TempAI.cs" />
+    <Compile Include="Assets\Scripts\ViewRange.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -278,6 +281,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity(s)/2018.4.8f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -286,9 +292,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Unity(s)/2018.4.8f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
