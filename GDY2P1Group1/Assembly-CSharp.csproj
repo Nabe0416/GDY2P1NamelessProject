@@ -61,10 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI\HearRange.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI\ViewRange.cs" />
     <Compile Include="Assets\Scripts\FollowPC.cs" />
-    <Compile Include="Assets\Scripts\HearRange.cs" />
-    <Compile Include="Assets\Scripts\TempAI.cs" />
-    <Compile Include="Assets\Scripts\ViewRange.cs" />
+    <Compile Include="Assets\Scripts\Items\SoundSource.cs" />
+    <Compile Include="Assets\Scripts\Items\ThrowableGameObj.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Document/SchoolShit/ResitY2/P1/EGD1&amp;2/Project/GDY2P1NamelessProject/GDY2P1Group1/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

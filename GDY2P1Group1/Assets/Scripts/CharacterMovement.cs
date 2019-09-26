@@ -17,26 +17,37 @@ public class CharacterMovement : MonoBehaviour
     //The direction that the character is facing.
     private Vector2 dir;
 
+    [SerializeField]
+    private bool TestOnly;
+
+    [SerializeField]
+    private GameObject tempThrowObj;
+
     private void Start()
     {
-        rb = this.gameObject.AddComponent<Rigidbody2D>();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
         AdjustRb();
     }
 
+    #region Set Rigidbody properties.
     private void AdjustRb()
     {
         rb.gravityScale = 0;
         rb.freezeRotation = true;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
+    #endregion
 
+    #region Movement.
     private void Movement()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         rb.MovePosition((Vector2)this.transform.position + new Vector2(x, y) * MoveSpeed * Time.deltaTime);
+        
     }
+    #endregion
 
     private Vector2 GetMousePosition()
     {
@@ -47,6 +58,16 @@ public class CharacterMovement : MonoBehaviour
     {
         dir = (GetMousePosition() - (Vector2)transform.position).normalized;
         characterSprite.transform.up = dir;
+        if(Input.GetMouseButtonDown(0))
+        {
+            TempThrowSmt();
+        }
+    }
+
+    private void TempThrowSmt()
+    {
+        var obj = Instantiate(tempThrowObj, (Vector2)this.transform.position + (GetMousePosition() - (Vector2)transform.position).normalized, Quaternion.identity);
+        obj.GetComponent<Rigidbody2D>().AddForce((GetMousePosition() - (Vector2)transform.position).normalized * 5, ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
@@ -54,7 +75,7 @@ public class CharacterMovement : MonoBehaviour
         Movement();
     }
 
-    public Transform GetPlayerPosition()
+    public Transform GetPlayerTransform()
     {
         return transform;
     }
