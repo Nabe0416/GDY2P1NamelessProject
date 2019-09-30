@@ -9,27 +9,37 @@ public class ThrowableGameObj : MonoBehaviour
     private GameObject tilemap;
     private bool madeSound = false;
 
+    private Item item;
+
     [SerializeField]
     private GameObject soundsrc;
 
-    private List<GameObject> list = new List<GameObject>();
+    private List<GameObject> hearingList = new List<GameObject>();
 
     private void Start()
     {
+        #region Refs.
         tilemap = FindObjectOfType<Tilemap>().gameObject;
+        item = this.GetComponent<PickUp>().pickup;
+        #endregion
     }
 
     private void Update()
     {
-        RemoveStoppedObj();
+        MakeStoppedObj();
     }
 
     //Temp method for testing object.
-    private void RemoveStoppedObj()
+    private void MakeStoppedObj()
     {
-        if(this.GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.1f)
+        if(this.GetComponent<Rigidbody2D>().velocity.sqrMagnitude < 0.2f)
         {
-            MakeSound();
+            if(GetComponent<CircleCollider2D>().isTrigger == false)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<CircleCollider2D>().isTrigger = true;
+                MakeSound();
+            }
         }
     }
 
@@ -37,15 +47,37 @@ public class ThrowableGameObj : MonoBehaviour
     {
         if(collision.gameObject == tilemap)
         {
-            MakeSound();
+            if (GetComponent<CircleCollider2D>().isTrigger == false)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                GetComponent<CircleCollider2D>().isTrigger = true;
+                MakeSound();
+            }
+        }
+        if(collision.gameObject.GetComponent<EnemyAI>())
+        {
+            if(item.GetType() == typeof(ThrowableItem))
+            {
+                ThrowableItem tItem = (ThrowableItem)item;
+                Hurt(collision.gameObject.GetComponent<EnemyAI>(), (int)tItem.damage);
+                print(collision.gameObject + " is hurt by " + tItem.name + ", the dmg is " + tItem.damage);
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!list.Contains(collision.gameObject) && collision.gameObject.GetComponent<HearRange>())
+        if(!hearingList.Contains(collision.gameObject) && collision.gameObject.GetComponent<HearRange>())
         {
-            list.Add(collision.gameObject);
+            hearingList.Add(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(hearingList.Contains(collision.gameObject) && collision.gameObject.GetComponent<HearRange>())
+        {
+            hearingList.Remove(collision.gameObject);
         }
     }
 
@@ -53,16 +85,20 @@ public class ThrowableGameObj : MonoBehaviour
     {
         if(!madeSound)
         {
-            foreach (GameObject go in list)
+            foreach (GameObject go in hearingList)
             {
-                var sSrc = Instantiate(soundsrc, this.transform.position, Quaternion.identity, go.transform);
+                var sSrc = Instantiate(soundsrc, this.transform.position, Quaternion.identity);
 
-                print(go);
+                print(go + " is attracted by " + item.name);
                 //go.GetComponent<HearRange>
             }
         }
         madeSound = true;
+    }
 
-        Destroy(this.gameObject, 3);//Temp
+    private void Hurt(EnemyAI ai, int damage)
+    {
+        ai.DamageHP(damage);
+        Destroy(this.gameObject);//Temp method.
     }
 }

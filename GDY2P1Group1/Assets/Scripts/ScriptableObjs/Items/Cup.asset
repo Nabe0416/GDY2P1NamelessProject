@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806391f9b8abb49449f5a25f1588e73d, type: 3}
   m_Name: Cup
   m_EditorClassIdentifier: 
-  parentObject: {fileID: 8353996482567794000, guid: 74691722e509ace48947ad3ae4033528,
-    type: 3}
-  id: 0
-  name: 
+  id: 1
+  name: Cup
   sprite: {fileID: 0}
-  damage: 0
-  weight: 0
+  damage: 1
+  weight: 1

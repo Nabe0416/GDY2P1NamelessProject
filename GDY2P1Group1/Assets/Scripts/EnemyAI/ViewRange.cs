@@ -14,8 +14,10 @@ public class ViewRange : MonoBehaviour
 
     private void Start()
     {
+        #region Refs.
         pc = FindObjectOfType<CharacterMovement>().gameObject;
         tilemap = FindObjectOfType<Tilemap>().gameObject;
+        #endregion
     }
 
     private void OnTriggerStay2D(Collider2D collision)

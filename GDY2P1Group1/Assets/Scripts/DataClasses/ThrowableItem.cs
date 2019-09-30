@@ -4,6 +4,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ThrowableItem : Item
 {
-    public int damage;
-    public int weight;
+    public uint damage;
+    public uint weight;
 }
