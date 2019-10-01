@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private GameObject characterSprite;
 
+    private Inventory inv;
+
     private Rigidbody2D rb;
 
     //The direction that the character is facing.
@@ -20,16 +22,21 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private bool TestOnly;
 
-    [SerializeField]
-    private GameObject tempThrowObj;
-
     private void Start()
     {
+        #region Refs.
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        inv = FindObjectOfType<Inventory>();
+        #endregion
         AdjustRb();
     }
 
-    #region Set Rigidbody properties.
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
+    #region Set Rigidbody properties
     private void AdjustRb()
     {
         rb.gravityScale = 0;
@@ -38,7 +45,7 @@ public class CharacterMovement : MonoBehaviour
     }
     #endregion
 
-    #region Movement.
+    #region Movement
     private void Movement()
     {
         float x = Input.GetAxis("Horizontal");
@@ -60,23 +67,22 @@ public class CharacterMovement : MonoBehaviour
         characterSprite.transform.up = dir;
         if(Input.GetMouseButtonDown(0))
         {
-            TempThrowSmt();
+            UseItem();
         }
     }
 
-    private void TempThrowSmt()
+    private void UseItem()
     {
-        var obj = Instantiate(tempThrowObj, (Vector2)this.transform.position + (GetMousePosition() - (Vector2)transform.position).normalized, Quaternion.identity);
-        obj.GetComponent<Rigidbody2D>().AddForce((GetMousePosition() - (Vector2)transform.position).normalized * 5, ForceMode2D.Impulse);
-    }
-
-    private void FixedUpdate()
-    {
-        Movement();
+        inv.UseItem();
     }
 
     public Transform GetPlayerTransform()
     {
         return transform;
+    }
+
+    public Vector2 GetPCMouseDir()
+    {
+        return (GetMousePosition() - (Vector2)transform.position).normalized;
     }
 }
